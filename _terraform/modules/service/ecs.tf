@@ -30,6 +30,10 @@ module "ecs_service" {
     var.ecs_config.launch_type
   ]
 
+  enable_autoscaling = true
+
+  enable_ecs_managed_tags = true
+
   container_definitions = {
     default = {
       name  = "${var.service_name}-service"
@@ -62,5 +66,5 @@ module "ecs_service" {
     }
   ]
 
-  ignore_task_definition_changes = false
+  ignore_task_definition_changes = true
 }

@@ -76,7 +76,7 @@ resource "aws_codepipeline" "ecs_pipeline" {
           version = "1"
           configuration = {
              ApplicationName     = aws_codedeploy_app.ecs_service_codedeploy_app.name,
-             DeploymentGroupName = aws_codedeploy_deployment_group.ecs_service_deployment_group.id
+             DeploymentGroupName = "${var.service_name}-deployment-group"
           }
       }
     }

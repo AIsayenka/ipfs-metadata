@@ -108,21 +108,24 @@ EOF
 resource "aws_iam_policy" "codepipeline_policy" {
   name = "${var.service_name}_CodePipelinePolicy"
   description = "Policy to allow codepipeline to execute"
-  policy      = <<EOF
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
     {
       "Action": [
-        "s3:GetObject", "s3:GetObjectVersion", "s3:PutObject",
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:PutObject",
         "s3:GetBucketVersioning"
       ],
       "Effect": "Allow",
       "Resource": "${aws_s3_bucket.artifact_bucket.arn}/*"
     },
     {
-      "Action" : [
-        "codebuild:StartBuild", "codebuild:BatchGetBuilds",
+      "Action": [
+        "codebuild:StartBuild",
+        "codebuild:BatchGetBuilds",
         "cloudformation:*",
         "iam:PassRole"
       ],
@@ -130,22 +133,30 @@ resource "aws_iam_policy" "codepipeline_policy" {
       "Resource": "*"
     },
     {
-      "Action" : [
+      "Action": [
         "ecs:*"
       ],
       "Effect": "Allow",
       "Resource": "*"
     },
     {
-			"Effect": "Allow",
-			"Action": [
-				"codestar-connections:*"
-			],
-			"Resource": "${var.codestar_arn}"
-		}
+      "Effect": "Allow",
+      "Action": [
+        "codestar-connections:*"
+      ],
+      "Resource": "${var.codestar_arn}"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "codedeploy:*"
+      ],
+      "Resource": "*"
+    }
   ]
 }
 EOF
+
 }
 
 # attachements

@@ -36,8 +36,8 @@ ecs_service_defaults = {
     launch_type = "EC2",
     task_definition_config = {
         essential = false,
-        memory = 512,
-        cpu = 256,
+        memory = 128,
+        cpu = 128,
         container_port = 80,
     }
 }
