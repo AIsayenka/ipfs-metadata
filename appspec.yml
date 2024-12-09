@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:767398092192:task-definition/ipfs-metadata-service-service"
+        LoadBalancerInfo:
+          ContainerName: "ipfs-metadata-service"
+          ContainerPort: 80
