@@ -102,7 +102,9 @@ variable "load_balancer_config" {
         {
             listener_arn = string
             target_group_1_arn = string
+            target_group_1_name = string
             target_group_2_arn = string
+            target_group_2_name = string
         }
     )
   

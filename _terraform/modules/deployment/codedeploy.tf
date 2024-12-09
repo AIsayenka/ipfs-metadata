@@ -32,10 +32,10 @@ resource "aws_codedeploy_deployment_group" "ecs_service_deployment_group" {
         listener_arns = [var.load_balancer_config.listener_arn]
       }
       target_group {
-        name = var.load_balancer_config.target_group_1_arn
+        name = var.load_balancer_config.target_group_1_name
       }
       target_group {
-        name = var.load_balancer_config.target_group_2_arn
+        name = var.load_balancer_config.target_group_2_name
       }
     }
   }

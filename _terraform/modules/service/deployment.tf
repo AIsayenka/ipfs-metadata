@@ -25,7 +25,9 @@ module "deployment" {
     load_balancer_config = {
       listener_arn = aws_lb_listener.http_listener.arn
       target_group_1_arn = aws_lb_target_group.target_group_1.arn
+      target_group_1_name = aws_lb_target_group.target_group_1.name
       target_group_2_arn = aws_lb_target_group.target_group_2.arn
+      target_group_2_name = aws_lb_target_group.target_group_2.name
     }
 
     codestar_arn = var.codestar_arn
