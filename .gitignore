@@ -1,1 +1,4 @@
 .env
+.terraform*
+_terraform/terraform*
+_shell_script.sh
