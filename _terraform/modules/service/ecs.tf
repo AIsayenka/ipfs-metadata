@@ -55,6 +55,7 @@ module "ecs_service" {
             valueFrom = secret.value_from
           }
       ]
+      enable_cloudwatch_logging = true
     }
   }
 
