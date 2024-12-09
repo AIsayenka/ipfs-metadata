@@ -21,4 +21,6 @@ phases:
       - docker push -a $REPOSITORY_URI
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$COMMIT_HASH > imagedefinitions.json
 artifacts:
-    files: imagedefinitions.json
+    files: 
+    - imagedefinitions.json
+    - appspec.yml
