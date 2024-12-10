@@ -6,8 +6,8 @@ resource "aws_ssm_parameter" "db_host" {
     overwrite = true
 }
 resource "aws_ssm_parameter" "db_name" {
-    name        = "DB_USERNAME"
-    description = "The database username"
+    name        = "DB_NAME"
+    description = "The database name"
     type        = "String"
     value       = var.db_name
     overwrite = true
