@@ -26,7 +26,7 @@ phases:
       - echo "CONTAINER_PORT"
       - echo "$CONTAINER_PORT"
       - echo Updating appspec.yml with the proper values...
-      - sed -i -e "s|REPOSITORY_URI|$REPOSITORY_URI|g" -e "s|ACCOUNT_ID|$AWS_ACCOUNT_ID|g" -e "s|REGION|$AWS_REGION|g" -e "s|SERVICE_NAME|$SERVICE_NAME|g" -e "s|CONTAINER_PORT|$CONTAINER_PORT|g" appspec.yml
+      - sed -i -e "s/REPOSITORY_URI/$REPOSITORY_URI/g" -e "s/ACCOUNT_ID/$AWS_ACCOUNT_ID/g" -e "s/REGION/$AWS_REGION/g" -e "s/SERVICE_NAME/$SERVICE_NAME/g" -e "s/CONTAINER_PORT/$CONTAINER_PORT/g" appspec.yml
       - echo Pushing the Docker image...
       - docker push -a $REPOSITORY_URI
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$COMMIT_HASH > imagedefinitions.json
