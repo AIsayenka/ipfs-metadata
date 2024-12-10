@@ -74,3 +74,10 @@ aws ecs put-account-setting-default
 --value enabled
 --region AWS_REGION
 ```
+
+## What could've been done better
+* Use proper branches and branching strategy where I have each feature in separate branches
+* Putting EC2 ASG, ECS cluster and RDS into separate modules. So it would be easier to have multiples if the setup requires it
+* Backend on remote with creating the s3 bucket
+* more security groups for finer control of the access, rather than 2 ones managed directly from root and passed to the modules (all open and only the VPC), and the ones coming form the referenced modules like ECS Service
+* Code structure, could group the parameters better for easier readability
