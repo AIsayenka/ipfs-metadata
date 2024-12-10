@@ -18,7 +18,7 @@ data "aws_iam_instance_profile" "ecs_instance_role" {
 }
 
 resource "aws_iam_role" "ecs_node_role" {
-  name_prefix        = "${var.global.resource_prefix}-ecs-node-role"
+  name        = "${var.global.resource_prefix}-ecs-node-role"
   assume_role_policy = data.aws_iam_policy_document.ecs_node_doc.json
 }
 
