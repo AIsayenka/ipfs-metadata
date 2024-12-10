@@ -100,6 +100,9 @@ GET /metadata
 }
 ```
 
+## Infrastructure
+Please, refer to [infrastructure doc](https://github.com/AIsayenka/ipfs-metadata/blob/main/_terraform/README.md)
+
 ## Acknowledgements
 * [Gin Gonic](https://github.com/gin-gonic/gin) for the web framework.
 * [sqlx](https://github.com/jmoiron/sqlx) for SQL database interactions.
