@@ -41,4 +41,9 @@ You need this for the CodePipeline to work, otherwise the source step is not goi
 * On the left side you will see `Settings` -> Connections
 * In Conections, you will see a pending connection called `CodeStar-connection`. You will need to click it and then either install an AWS app into your github or select from already created GitHub apps on your account
 
-### Step 5: 
+### Step 5: Run the pipeline
+* Navigate to AWS Console -> CodePipeline
+* On the left side you will see `Pipeline` -> Pipelines
+* Select `ipfs-metadata-codepipeline` (depends on the service name)
+* On the right, click `Release Change`
+* Wait a couple of minutes for the process to finish
