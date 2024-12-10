@@ -76,5 +76,5 @@ module ecs_service {
         deployment_wait_time_in_minutes = var.code_deploy_config.deployment_wait_time_in_minutes
     }
 
-
+    aws_account_id = var.aws_account_id
 }
