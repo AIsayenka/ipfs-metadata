@@ -3,7 +3,7 @@ module "ecs_service" {
 
   depends_on = [ aws_ecr_repository.service_ecr_repository ]
 
-  name  = "${var.service_name}-service"
+  name  = "${var.service_name}-ecs-service"
   
   subnet_ids = var.subnets.private
 
@@ -16,7 +16,7 @@ module "ecs_service" {
   load_balancer = [
     {
       target_group_arn = length(aws_lb_target_group.target_group_1.arn) > 0 ? aws_lb_target_group.target_group_1.arn : aws_lb_target_group.target_group_2.arn
-      container_name = "${var.service_name}-service"
+      container_name = "${var.service_name}"
       container_port = var.task_definition_config.container_port
       # elb_name = aws_lb.service_lb.name
     }
