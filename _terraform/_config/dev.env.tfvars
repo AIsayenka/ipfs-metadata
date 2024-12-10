@@ -6,7 +6,7 @@ global = {
 }
 
 github_repo = "AIsayenka/ipfs-metadata"
-github_branch = "master"
+github_branch = "main"
 
 ec2_config = {
     # ami = "ami-0c44c487d367c865d",
