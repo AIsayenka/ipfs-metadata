@@ -60,3 +60,17 @@ You need this for the CodePipeline to work, otherwise the source step is not goi
 * Select `ipfs-metadata-codepipeline` (depends on the service name)
 * On the right, click `Release Change`
 * Wait a couple of minutes for the process to finish
+
+### Side Node: ENI Trunking
+AWS has the ENI trunking feature ([ref](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)) which allows to have more ECS tasks deployed onto EC2 instances. You can enable it through setting an account setting (for your root/IAM account) and default setting (for the whole AWS account, if you have enough permissions on the account you are running the CLI commands through). You can do so with the following:
+```
+aws ecs put-account-setting
+--name awsvpcTrunking
+--value enabled
+--region AWS_REGION
+
+aws ecs put-account-setting-default
+--name awsvpcTrunking
+--value enabled
+--region AWS_REGION
+```
