@@ -14,12 +14,12 @@ resource "aws_codebuild_project" "ecs_service_codebuild" {
       name = "REPOSITORY_URI"
       value = var.ecr_repository_url
     }
+    # environment_variable {
+    #   name = "AWS_DEFAULT_REGION"
+    #   value = var.aws_region
+    # }
     environment_variable {
-      name = "AWS_DEFAULT_REGION"
-      value = var.aws_region
-    }
-    environment_variable {
-      name = "CONTAINER_NAME"
+      name = "SERVICE_NAME"
       value = var.service_name
     }
 
