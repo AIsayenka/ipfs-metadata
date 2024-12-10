@@ -22,6 +22,15 @@ resource "aws_codebuild_project" "ecs_service_codebuild" {
       name = "CONTAINER_NAME"
       value = var.service_name
     }
+
+    dynamic "environment_variable" {
+      for_each = var.code_build_config.env_var
+      content {
+        name  = environment_variable.value.name
+        value = environment_variable.value.value
+      }
+      
+    }
   }
   source {
     type            = "CODEPIPELINE"

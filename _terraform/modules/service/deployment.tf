@@ -30,6 +30,17 @@ module "deployment" {
       target_group_2_name = aws_lb_target_group.target_group_2.name
     }
 
+    codebuild_env_vars = [
+        {
+            name = "CONTAINER_PORT"
+            value = var.task_definition_config.container_port
+        },
+        {
+            name = "AWS_ACCOUNT_ID"
+            value = var.aws_account_id
+        }
+    ]
+
     codestar_arn = var.codestar_arn
 
     # stages = [

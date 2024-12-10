@@ -109,3 +109,11 @@ variable "load_balancer_config" {
     )
   
 }
+
+variable "codebuild_env_vars" {
+    description = "CodeBuild environment variables"
+    type = list(object({
+      name = string
+      value = string
+    }))
+}
