@@ -17,6 +17,25 @@ Root -> `Service` module -> `Deployment` module
 
 Most of the settings are set up through a env tfvars file. In this case it's `./_config/dev.env.tfvars` except for database configuration, which is handled through a shell script (Please, refer to `Step 2` for structure). The idea for the shell script is that we can store the script in some kind of vault like 1Password, so the credentials are not exposed through the ENV tfvars file.
 
+## Features
+* Codestar for GitGub connection
+* ECS Cluster with `EC2` launch type
+* EC2 ASG with connection to ECS capacity provider associated with the ECS cluster
+* RDS Aurora Cluster in `postgres` mode
+* ECS Service creation within the ECS cluster
+* Per ECS service:
+    * ECR repository with mutable tags (needed for easy push of ":latest" tag)
+    * Public load balancer with listening on port 80
+    * CodePipeline deployment:
+        * Source stage connected to GitHub
+        * CodeBuild project in priveleged mode (required for building Docker images)
+        * CodeDeploy
+            * Application specifying compute platform
+            * Deployment group associated with the Application and specifying the deployment configuration like style, blue green configuration, load balancers information (LB name and Blue/Gree target groups), deployment config name (taken from predefined configurations) and the ECS service to associate it
+        * S3 to store the build artifacts (In this case just image definitions and appspec.yml file in the archive as we store the code inside Docker images posted to ECR)
+        * IAM roles and policies needed for deployment and building images
+
+
 ## Setup
 
 ### Step 1: Initialize terraform
@@ -80,3 +99,9 @@ aws ecs put-account-setting-default
 * Backend on remote with creating the s3 bucket
 * more security groups for finer control of the access, rather than 2 ones managed directly from root and passed to the modules (all open and only the VPC), and the ones coming form the referenced modules like ECS Service
 * Code structure, could group the parameters better for easier readability
+* SSL configuration for the load balancer
+* Public access control through an argument
+* VPN endpoints
+* Security groups update to accommodate VPN connection
+* Caching for when building the Docker images to speed up `Build` stage in code pipeline
+* Potentially VPC endpoint for ecr to save on traffic costs
