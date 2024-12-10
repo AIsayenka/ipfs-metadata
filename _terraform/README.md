@@ -17,7 +17,6 @@ Root -> `Service` module -> `Deployment` module
 
 Most of the settings are set up through a env tfvars file. In this case it's `./_config/dev.env.tfvars` except for database configuration, which is handled through a shell script (Please, refer to `Step 2` for structure). The idea for the shell script is that we can store the script in some kind of vault like 1Password, so the credentials are not exposed through the ENV tfvars file.
 
-
 ## Setup
 
 ### Step 1: Initialize terraform
