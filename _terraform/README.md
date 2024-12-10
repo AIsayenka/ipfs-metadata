@@ -5,6 +5,19 @@ This is IaC configuration for the app
 - Terraform
 - AWS Credentials configured on the machine already
 
+# High Level summary
+The general idea is to have the ECS cluster and EC2 ASG at the top level, since we can later add services to them. Ideally they should enclosed into a module for simplicity. But this is more putting everything together quickly. Same goes for RDS and the VPC.
+
+Then we have the `service` module. The module takes care of creating ECR repository for the service Docker images, load balancer creation and ECS service created within the aforementioned ECS cluster.
+
+And the `deployment`. The module configures CodeBuild project, CodeDeploy app and deployment group, S3 bucket for artifacts, CodePipeline configurarion and required IAM Roles and policies. All for a specific service.
+
+Structure:
+Root -> `Service` module -> `Deployment` module
+
+Most of the settings are set up through a env tfvars file. In this case it's `./_config/dev.env.tfvars` except for database configuration, which is handled through a shell script (Please, refer to `Step 2` for structure). The idea for the shell script is that we can store the script in some kind of vault like 1Password, so the credentials are not exposed through the ENV tfvars file.
+
+
 ## Setup
 
 ### Step 1: Initialize terraform
