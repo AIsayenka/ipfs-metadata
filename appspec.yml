@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:us-east-1:767398092192:task-definition/ipfs-metadata-service-service"
+        TaskDefinition: "arn:aws:ecs:*REGION*:*ACCOUNT_ID:task-definition/*SERVICE_NAME*:latest"
         LoadBalancerInfo:
-          ContainerName: "ipfs-metadata-service"
-          ContainerPort: 80
+          ContainerName: "*SERVICE_NAME*"
+          ContainerPort: *CONTAINER_PORT*
