@@ -37,6 +37,13 @@ func setupDB() (*sqlx.DB, error) {
 	host := os.Getenv("POSTGRES_HOST")
 	port := os.Getenv("POSTGRES_PORT")
 
+	// Print out the environment variables
+	log.Printf("User: %s\n", user)
+	log.Printf("Password: %s\n", password)
+	log.Printf("DB Name: %s\n", dbname)
+	log.Printf("Host: %s\n", host)
+	log.Printf("Port: %s\n", port)
+
 	// Construct the connection string
 	connStr := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%s sslmode=disable", user, password, dbname, host, port)
 
