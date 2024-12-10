@@ -52,6 +52,7 @@ module "deployment" {
 
     codestar_arn = var.codestar_arn
 
+    # How it should've been with the stages
     # stages = [
     #     {
     #         name = "Source"
