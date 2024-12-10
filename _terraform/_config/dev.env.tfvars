@@ -38,7 +38,7 @@ ecs_service_defaults = {
         essential = false,
         memory = 128,
         cpu = 128,
-        container_port = 80,
+        container_port = 8080,
     }
 }
 
