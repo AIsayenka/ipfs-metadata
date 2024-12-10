@@ -36,7 +36,7 @@ module "ecs_service" {
 
   container_definitions = {
     default = {
-      name  = "${var.service_name}-service"
+      name  = "${var.service_name}"
       image = "${aws_ecr_repository.service_ecr_repository.repository_url}:latest"
       cpu   = var.task_definition_config.container_cpu
       memory = var.task_definition_config.container_memory
