@@ -39,6 +39,10 @@ module "deployment" {
         {
             name = "AWS_ACCOUNT_ID"
             value = var.aws_account_id
+        },
+        {
+            name = "CAPACITY_PROVIDER_NAME"
+            value = var.ecs_config.capacity_provider_name
         }
     ]
 
