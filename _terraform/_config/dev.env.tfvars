@@ -12,7 +12,7 @@ ec2_config = {
     # ami = "ami-0c44c487d367c865d",
     ami = "ami-0ad089d873abe31c4",
     instance_type = "t3",
-    instance_size = "nano",
+    instance_size = "medium",
     drive_config = {
         volume_size = 30,
         volume_type = "gp2",
@@ -23,7 +23,7 @@ ec2_config = {
 
 ec2_autoscaling_config = {
     min_size = 1,
-    max_size = 1,
+    max_size = 5,
     desired_capacity = 1,
 }
 
@@ -33,11 +33,13 @@ ecs_cluster_config = {
 
 ecs_service_defaults = {
     desired_count = 1,
+    min_count = 1,
+    max_count = 12,
     launch_type = "EC2",
     task_definition_config = {
         essential = false,
-        memory = 128,
-        cpu = 128,
+        memory = 2048,
+        cpu = 1024,
         container_port = 8080,
     }
 }

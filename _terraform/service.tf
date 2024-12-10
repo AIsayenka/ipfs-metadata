@@ -62,6 +62,8 @@ module ecs_service {
         cluster_arn = aws_ecs_cluster.ecs_cluster.arn
         launch_type = var.ecs_service_defaults.launch_type
         desired_count = var.ecs_service_defaults.desired_count
+        min_count = var.ecs_service_defaults.min_count
+        max_count = var.ecs_service_defaults.max_count
         capacity_provider_arn = aws_ecs_capacity_provider.capacity_provider.arn
         capacity_provider_name = aws_ecs_capacity_provider.capacity_provider.name
     }

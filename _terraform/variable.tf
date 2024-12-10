@@ -53,6 +53,8 @@ variable "ecs_service_defaults" {
     description = "ECS Service defaults"
     type = object({
         desired_count = number
+        min_count     = number
+        max_count     = number
         launch_type   = string
         task_definition_config = object({
             essential = bool

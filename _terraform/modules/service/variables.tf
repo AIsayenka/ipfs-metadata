@@ -39,6 +39,8 @@ variable "ecs_config" {
         cluster_name = string
         cluster_arn = string
         desired_count = number
+        min_count = number
+        max_count = number
         launch_type = string
         capacity_provider_arn = string
         capacity_provider_name = string

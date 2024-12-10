@@ -5,6 +5,7 @@ resource "aws_rds_cluster" "aurora_cluster" {
     availability_zones      = ["${var.global.region}a", "${var.global.region}b", "${var.global.region}c"]
     master_username         = var.db_username
     master_password         = var.db_password
+    database_name           = var.db_name
     backup_retention_period = 5
     preferred_backup_window = "07:00-09:00"
     preferred_maintenance_window = "mon:03:00-mon:04:00"
