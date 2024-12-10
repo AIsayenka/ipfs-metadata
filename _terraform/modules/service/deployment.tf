@@ -6,6 +6,7 @@ module "deployment" {
     github_branch = var.github_branch
 
     aws_region = var.aws_region
+    aws_account_id = var.aws_account_id
     vpc_id = var.vpc_id
     subnets = var.subnets
 
