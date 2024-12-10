@@ -7,11 +7,13 @@ import (
 func main() {
 	db, err := setupDB()
 	if err != nil {
+		log.Printf("Failed to connect to database: %v", err)
 		log.Fatal(err)
 	}
 
 	cids, err := readCSV("data/ipfs_cids.csv")
 	if err != nil {
+		log.Printf("Failed to read CSV file: %v", err)
 		log.Fatal(err)
 	}
 
